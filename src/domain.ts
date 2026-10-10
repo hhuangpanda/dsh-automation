@@ -274,8 +274,8 @@ export class AutomationDomain {
       const task = Object.hasOwn(state.tasks, taskId) ? state.tasks[taskId] : undefined
       if (task === undefined) throw new AutomationDomainError('task_not_found', `Automation ${taskId} was not found.`)
       const index = task.runs.findIndex((run) => run.id === runId)
-      if (index === -1) return false
-      const run = task.runs[index]!
+      const run = task.runs[index]
+      if (run === undefined) return false
       if (nonTerminal(run) || run.delivery?.status === 'sending') {
         throw new AutomationDomainError('run_in_progress', 'A queued, running, or sending run cannot be deleted.')
       }
