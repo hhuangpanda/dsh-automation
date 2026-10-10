@@ -1,6 +1,6 @@
 {
   "name": "@hhuangpanda/dsh-automation",
-  "version": "0.3.33",
+  "version": "0.3.34",
   "description": "Durable agent-created automations for DeepSeek Harness",
   "repository": {
     "type": "git",
