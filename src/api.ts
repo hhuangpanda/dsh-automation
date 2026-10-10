@@ -169,8 +169,9 @@ export function registerAutomationApi(ctx: Context, controller: AutomationContro
             send(res, 405, { error: 'Method not allowed.' })
             return
           }
-          const taskId = decodeURIComponent(runMatch[1]!)
-          const runId = decodeURIComponent(runMatch[2]!)
+          const [, rawTaskId = '', rawRunId = ''] = runMatch
+          const taskId = decodeURIComponent(rawTaskId)
+          const runId = decodeURIComponent(rawRunId)
           if (![taskId, runId].every((id) => /^[A-Za-z0-9_-]{1,256}$/.test(id))) {
             throw new Error('Invalid automation task or run id.')
           }
