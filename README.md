@@ -1,27 +1,6 @@
-# Thank you, and goodbye
-
-> **Maintenance status: active maintenance has ended (2026-10-08).**
+> **A fork of [alpacachen/dsh-automation](https://github.com/alpacachen/dsh-automation) that adds support for DSH 0.2.0-rc.2.**
 >
-> This project will no longer actively develop new features. Compatibility updates for future DSH versions and issue fixes are not promised. The existing code, documentation, and published versions remain available for existing users and reference.
-
-Automation began with a simple idea: let an Agent pick up work at an agreed time, without waiting for us to open a conversation. Scheduling, session continuity, execution records, and message delivery grew out of that idea—and out of the help this project received along the way.
-
-DSH now provides official scheduling capabilities. They are not a complete replacement for this plugin, but for basic scheduling, I would rather pass the baton to the official implementation than keep maintaining a parallel one. **New users should first explore the official Schedule / scheduled-task features available in their DSH version.**
-
-Thank you to everyone who used the plugin, shared feedback, opened issues, contributed code, or helped test it. Its value was not only in the features we built, but in exploring together how Agents could take part in everyday work.
-
-**For existing users:**
-
-- Ending maintenance does not immediately disable existing installations, but future DSH upgrades may break compatibility. Validate your setup before relying on it for critical unattended work.
-- Tasks, permissions, model and skill settings, execution history, and dsh-im delivery settings **do not automatically migrate to the official features**. Those features are not guaranteed to cover these capabilities.
-- Back up task configuration and run data before migrating. Check the official feature set, validate replacement tasks, and then disable old tasks to avoid duplicate runs. Do not uninstall or delete data before backing it up.
-- This change only updates the maintenance notice. It does not archive the repository, deprecate the npm package, delete code, or alter your existing tasks. Forks are welcome under the MIT license.
-
-The original introduction and usage documentation remain below as reference for existing versions, not as a promise of ongoing maintenance.
-
-Thank you for being part of this little project.
-
----
+> If you used the original plugin, disable it before installing this one, or tasks will run twice.
 
 <p align="center">
   <img src="docs/images/automation-overview-en.png" alt="dsh-automation: natural-language schedules, session continuity, models and skills, permissions, message delivery, and failure protection" width="100%">
@@ -34,13 +13,12 @@ Thank you for being part of this little project.
 </p>
 
 <p>
-<a href="https://www.npmjs.com/package/@alpacachen/dsh-automation"><img alt="npm version" src="https://img.shields.io/npm/v/@alpacachen/dsh-automation?color=5b8def&label=npm"></a>
-<a href="https://awesome-dsh-plugin.com"><img alt="Awesome DSH Plugin" src="https://awesome-dsh-plugin.com/badge.svg"></a>
-<a href="https://github.com/alpacachen/dsh-automation/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/alpacachen/dsh-automation/actions/workflows/ci.yml/badge.svg"></a>
+<a href="https://www.npmjs.com/package/@hhuangpanda/dsh-automation"><img alt="npm version" src="https://img.shields.io/npm/v/@hhuangpanda/dsh-automation?color=5b8def&label=npm"></a>
+<a href="https://github.com/hhuangpanda/dsh-automation/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/hhuangpanda/dsh-automation/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
 <p>
-<a href="#get-started">Get started</a> &nbsp; / &nbsp; <a href="#demo">Demo</a> &nbsp; / &nbsp; <a href="docs/reference.md">Reference</a> &nbsp; / &nbsp; <a href="https://github.com/alpacachen/dsh-automation/issues">Report an issue</a>
+<a href="#get-started">Get started</a> &nbsp; / &nbsp; <a href="#demo">Demo</a> &nbsp; / &nbsp; <a href="docs/reference.md">Reference</a> &nbsp; / &nbsp; <a href="https://github.com/hhuangpanda/dsh-automation/issues">Report an issue</a>
 </p>
 
 <p>Release checks. Dependency reviews. Daily handoffs.<br>Set the schedule. Let your Agent take it from there.</p>
@@ -80,10 +58,10 @@ Thank you for being part of this little project.
 
 ## Get started
 
-Targets DSH **0.1.7-rc.2** and its current APIs. Older Host versions are not supported.
+Targets DSH **0.1.7-rc.2**, **0.2.0-rc.1**, and **0.2.0-rc.2**. Tested only on 0.2.0-rc.2.
 
 ```sh
-dsh plugin --profile web add @alpacachen/dsh-automation
+dsh plugin --profile web add @hhuangpanda/dsh-automation
 ```
 
 Restart `dsh web`, open a workspace, and make your first request:
@@ -151,6 +129,6 @@ Dependency reviews need working web tools on the Host. For report delivery, conf
 
 <p align="center">
   <a href="docs/reference.md">Execution rules &amp; tool reference</a> &nbsp; · &nbsp;
-  <a href="https://github.com/alpacachen/dsh-automation/issues">Feedback &amp; ideas</a> &nbsp; · &nbsp;
+  <a href="https://github.com/hhuangpanda/dsh-automation/issues">Feedback &amp; ideas</a> &nbsp; · &nbsp;
   <a href="LICENSE">MIT License</a>
 </p>

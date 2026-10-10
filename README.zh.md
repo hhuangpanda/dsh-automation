@@ -1,27 +1,6 @@
-# 谢谢，再见
-
-> **维护状态：停止积极维护（2026-10-08）**
+> **这是 [alpacachen/dsh-automation](https://github.com/alpacachen/dsh-automation) 的 fork，新增对 DSH 0.2.0-rc.2 的支持。**
 >
-> 本项目不再主动开发新功能，也不承诺后续 DSH 版本的兼容适配或问题修复。现有代码、文档和已发布版本保留，供已有用户参考与使用。
-
-Automation 的起点很简单：让 Agent 不必每次等我们打开对话，而是能按约定的时间接手工作。从定时任务到会话延续、执行记录和消息投递，这个项目承载了不少尝试，也收到了许多帮助。
-
-如今 DSH 已提供官方的定时任务能力。它与本插件并非完全等价，但对于基础调度，我更愿意把接力棒交给官方，而不再持续维护一套平行实现。**建议新用户优先了解所在 DSH 版本的官方 Schedule / 定时任务功能。**
-
-感谢每一位使用、反馈、提 Issue、贡献代码和帮助验证的朋友。这个项目的意义，不只在于留下了多少功能，也在于我们一起探索过 Agent 可以怎样参与日常工作。
-
-**给已有用户：**
-
-- 停止维护不代表现有安装会立即失效，但后续升级 DSH 可能导致不兼容；请自行验证，不要将未经验证的版本用于关键无人值守任务。
-- 本插件的任务、权限、模型与技能配置、执行历史以及 dsh-im 投递设置，**不会自动迁移到官方功能**；官方也不保证覆盖这些能力。
-- 迁移前请备份任务配置和运行数据，逐项核对官方功能支持范围，先验证替代任务，再停用旧任务，避免重复执行。不要在备份前卸载或删除数据。
-- 本仓库此次仅更新维护声明，不归档仓库、不弃用 npm 包、不删除代码，也不会更改你的现有任务。欢迎依据 MIT 许可证 fork，继续适合自己的方向。
-
-下面保留原有介绍与使用文档，作为现有版本的参考，不代表继续维护的承诺。
-
-谢谢你们，让这个小项目走到了这里。
-
----
+> 如果你用过原版插件，请先停用它再安装本插件，否则任务会重复执行。
 
 <p align="center">
   <img src="docs/images/automation-overview-zh.png" alt="dsh-automation：自然语言调度、会话延续、模型与技能、权限控制、消息投递、失败保护" width="100%">
@@ -34,13 +13,12 @@ Automation 的起点很简单：让 Agent 不必每次等我们打开对话，�
 </p>
 
 <p>
-<a href="https://www.npmjs.com/package/@alpacachen/dsh-automation"><img alt="npm version" src="https://img.shields.io/npm/v/@alpacachen/dsh-automation?color=5b8def&label=npm"></a>
-<a href="https://awesome-dsh-plugin.com"><img alt="Awesome DSH Plugin" src="https://awesome-dsh-plugin.com/badge.svg"></a>
-<a href="https://github.com/alpacachen/dsh-automation/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/alpacachen/dsh-automation/actions/workflows/ci.yml/badge.svg"></a>
+<a href="https://www.npmjs.com/package/@hhuangpanda/dsh-automation"><img alt="npm version" src="https://img.shields.io/npm/v/@hhuangpanda/dsh-automation?color=5b8def&label=npm"></a>
+<a href="https://github.com/hhuangpanda/dsh-automation/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/hhuangpanda/dsh-automation/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
 <p>
-<a href="#开始使用">开始使用</a> &nbsp; / &nbsp; <a href="#demo">Demo</a> &nbsp; / &nbsp; <a href="docs/reference.zh.md">使用参考</a> &nbsp; / &nbsp; <a href="https://github.com/alpacachen/dsh-automation/issues">反馈问题</a>
+<a href="#开始使用">开始使用</a> &nbsp; / &nbsp; <a href="#demo">Demo</a> &nbsp; / &nbsp; <a href="docs/reference.zh.md">使用参考</a> &nbsp; / &nbsp; <a href="https://github.com/hhuangpanda/dsh-automation/issues">反馈问题</a>
 </p>
 
 <p>发布检查、依赖巡检、每日交接。<br>安排一次，让 Agent 按计划接手。</p>
@@ -80,10 +58,10 @@ Automation 的起点很简单：让 Agent 不必每次等我们打开对话，�
 
 ## 开始使用
 
-以 DSH **0.1.7-rc.2** 及其当前接口为基线，不再支持旧版 Host。
+适配 DSH **0.1.7-rc.2**、**0.2.0-rc.1** 和 **0.2.0-rc.2**，仅在 0.2.0-rc.2 上测试过。
 
 ```sh
-dsh plugin --profile web add @alpacachen/dsh-automation
+dsh plugin --profile web add @hhuangpanda/dsh-automation
 ```
 
 重启 `dsh web`，在工作区里发出第一条安排：
@@ -151,6 +129,6 @@ Agent 会预览计划、权限等配置，**你确认后才创建**。也可以�
 
 <p align="center">
   <a href="docs/reference.zh.md">运行规则与工具参考</a> &nbsp; · &nbsp;
-  <a href="https://github.com/alpacachen/dsh-automation/issues">问题与建议</a> &nbsp; · &nbsp;
+  <a href="https://github.com/hhuangpanda/dsh-automation/issues">问题与建议</a> &nbsp; · &nbsp;
   <a href="LICENSE">MIT License</a>
 </p>

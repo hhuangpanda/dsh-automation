@@ -181,13 +181,13 @@ try {
     // its factory. Finish that transport before replacing it with this build.
     await page.evaluate(async () => {
       const modules = window.__automationTestModules
-      const id = '@alpacachen/dsh-automation'
+      const id = '@hhuangpanda/dsh-automation'
       if (modules.manifest.modules.some((row) => row.id === id)) await modules.prefetch(id)
       modules.invalidate(id)
     })
     await page.addScriptTag({ path: fileURLToPath(new URL('../lib/client.js', import.meta.url)) })
     await page.evaluate(async () => {
-      const mod = await window.__automationTestModules.import('@alpacachen/dsh-automation')
+      const mod = await window.__automationTestModules.import('@hhuangpanda/dsh-automation')
       const React = window.__automationTestSeeds.react
       const ReactDOM = window.__automationTestSeeds['react-dom/client']
       const components = {}
