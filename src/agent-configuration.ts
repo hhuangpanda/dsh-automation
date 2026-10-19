@@ -123,7 +123,6 @@ export class AgentConfiguration {
     const skills = this.ctx.agentPresets.serviceFor(agent, 'skills') ?? this.ctx.skills
     const loaded = []
     for (const name of task.execution.skills) {
-      // dsh 0.2.1+: the Agent is its own scope key and resolves its preset's skill layers.
       const skill = await skills.get(name, { cwd: task.execution.cwd, scope: agent })
       if (skill === undefined) throw new Error(`Selected skill ${name} is unavailable.`)
       if (!isUserInvocable(skill)) throw new Error(`Selected skill ${name} is not user-invocable.`)
