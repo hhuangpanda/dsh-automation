@@ -1,7 +1,6 @@
 import type { Context } from '@deepseek-ai/cordis'
 import type { Agent } from '@deepseek-ai/dsh-agent'
 import { ReasoningEffortId } from '@deepseek-ai/dsh-llm'
-import { standingMountFor } from '@deepseek-ai/dsh-agent-preset-registry'
 import { isUserInvocable, renderSkillContent, type SkillSummary } from '@deepseek-ai/dsh-skill'
 import { assertProviderModelPair, validateReasoningExecution } from './validation.js'
 import type { AgentConfigurationOptions, AutomationExecution, AutomationTask } from './types.js'
@@ -122,10 +121,10 @@ export class AgentConfiguration {
   async loadSelectedSkills(agent: Agent, task: AutomationTask): Promise<readonly { text: string; source: { kind: 'skill-invocation'; name: string; form: 'instructions' } }[]> {
     if (task.execution.skills.length === 0) return []
     const skills = this.ctx.agentPresets.serviceFor(agent, 'skills') ?? this.ctx.skills
-    const scope = standingMountFor(agent.ctx)?.key
     const loaded = []
     for (const name of task.execution.skills) {
-      const skill = await skills.get(name, { cwd: task.execution.cwd, scope })
+      // dsh 0.2.1+: the Agent is its own scope key and resolves its preset's skill layers.
+      const skill = await skills.get(name, { cwd: task.execution.cwd, scope: agent })
       if (skill === undefined) throw new Error(`Selected skill ${name} is unavailable.`)
       if (!isUserInvocable(skill)) throw new Error(`Selected skill ${name} is not user-invocable.`)
       loaded.push({
