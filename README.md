@@ -1,4 +1,4 @@
-> **A fork of [alpacachen/dsh-automation](https://github.com/alpacachen/dsh-automation) that adds support for DSH 0.2.0-rc.2.**
+> **A fork of [alpacachen/dsh-automation](https://github.com/alpacachen/dsh-automation) that adds support up to DSH 0.2.1-rc.2.**
 >
 > If you used the original plugin, disable it before installing this one, or tasks will run twice.
 
@@ -58,7 +58,7 @@
 
 ## Get started
 
-Targets DSH **0.1.7-rc.2**, **0.2.0-rc.1**, and **0.2.0-rc.2**. Tested only on 0.2.0-rc.2.
+Targets DSH **0.1.7-rc.2**, **0.2.0-rc.1**, **0.2.0-rc.2**, **0.2.1-rc.1** and **0.2.1-rc.2**. 0.3.35 is tested on 0.2.1-rc.2; earlier releases were tested on 0.2.0-rc.2. Versions up to 0.3.34 fail to load on DSH 0.2.1 and later, so update to 0.3.35.
 
 ```sh
 dsh plugin --profile web add @hhuangpanda/dsh-automation
