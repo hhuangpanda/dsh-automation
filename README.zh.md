@@ -1,4 +1,4 @@
-> **这是 [alpacachen/dsh-automation](https://github.com/alpacachen/dsh-automation) 的 fork，新增支持至 DSH 0.2.1-rc.2。**
+> **这是 [alpacachen/dsh-automation](https://github.com/alpacachen/dsh-automation) 的 fork，新增支持较新的 DSH 版本，已在 0.2.1-rc.5 上测试。**
 >
 > 如果你用过原版插件，请先停用它再安装本插件，否则任务会重复执行。
 
@@ -59,7 +59,10 @@
 
 ## 开始使用
 
-适配 DSH **0.1.7-rc.2**、**0.2.0-rc.1**、**0.2.0-rc.2**、**0.2.1-rc.1** 和 **0.2.1-rc.2**。0.3.35 已在 0.2.1-rc.2 上测试，更早的版本在 0.2.0-rc.2 上测试过。0.3.34 及更早版本无法在 DSH 0.2.1 及以上版本加载，请升级到 0.3.35。
+| 插件版本 | 支持的 DSH 版本 |
+| --- | --- |
+| 0.3.35 及更高 | 0.1.7-rc.2 至最新的 0.2.1 RC |
+| 0.3.34 及更早 | 0.1.7-rc.2 至 0.2.0-rc.2（无法在 0.2.1 及以上版本加载） |
 
 ```sh
 dsh plugin --profile web add @hhuangpanda/dsh-automation
