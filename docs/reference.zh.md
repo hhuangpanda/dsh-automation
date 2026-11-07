@@ -43,6 +43,8 @@
 | `automation_resume`  | 恢复任务，可同时立即运行一次。                 |
 | `automation_delete`  | 删除任务及未来调度，保留已有会话。             |
 
+如需让某些智能体预设完全不加载这些工具，请在插件的 `excludePresets` 设置中列出这些预设 id。使用这些预设的会话（包括子智能体）不会获得这些工具，也不占用其 schema token。
+
 创建与更新支持 `agent_preset`、`provider` / `model`、`reasoning_effort` 和有序 `skills`；更新可清除执行覆盖或替换技能列表。创建时还可传入 `execution_mode: pinned-session`、`target_session_id` 和经用户确认的 `session_target_confirmed: true`。创建后更换目标会话，以及配置消息投递，需在界面中操作。
 
 | 类型 | 参数        | 格式 / 示例                                                             |
