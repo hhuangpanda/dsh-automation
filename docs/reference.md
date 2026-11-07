@@ -43,6 +43,8 @@ State is written to a temporary file in the same directory, flushed, and atomica
 | `automation_resume`  | Resume, optionally with one immediate run.                                   |
 | `automation_delete`  | Delete the task and future scheduling, preserving existing sessions.         |
 
+To keep these tools out of some Agent presets entirely, list the preset ids in the plugin's `excludePresets` setting. Sessions on those presets, including subagents, never receive the tools or their schema tokens.
+
 Create and update support `agent_preset`, `provider` / `model`, `reasoning_effort`, and ordered `skills`; updates can clear execution overrides or replace the skill list. Creation also accepts `execution_mode: pinned-session`, `target_session_id`, and `session_target_confirmed: true` after user confirmation. Changing the target after creation and configuring message delivery require the UI.
 
 | Type      | Parameter   | Format / example                                                           |
