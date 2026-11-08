@@ -48,6 +48,8 @@ export interface Config {
   /** Run history is unlimited unless an explicit limit is configured. */
   readonly maxRunHistory?: number
   readonly maxRunDurationMs?: number
+  /** Agent preset ids whose sessions get no automation tools. */
+  readonly excludePresets?: readonly string[]
 }
 
 export async function apply(ctx: Context, config: Config = {}): Promise<void> {
@@ -73,11 +75,20 @@ export async function apply(ctx: Context, config: Config = {}): Promise<void> {
       validate: (destination) => validateDelivery(ctx, destination),
     })
   const toolCleanups = new Map<Agent, () => void>()
+  const excludePresets = new Set(config.excludePresets ?? [])
+
+  const uninstallTools = (agent: Agent) => {
+    toolCleanups.get(agent)?.()
+    toolCleanups.delete(agent)
+  }
 
   const installTools = (agent: Agent) => {
     // Normal resumed sessions remain usable by their human owner. Tool execution
     // is guarded per automation turn rather than permanently omitting the tools.
-    if (agent.id.startsWith('automation-') || toolCleanups.has(agent)) return
+    if (agent.id.startsWith('automation-')) return
+    const excluded = excludePresets.has(ctx.agentPresets.composedPreset(agent.ctx) ?? '')
+    if (excluded) return uninstallTools(agent)
+    if (toolCleanups.has(agent)) return
     const dispose = registerAutomationTools(ctx, agent.ctx, agent, controller)
     toolCleanups.set(agent, dispose)
   }
@@ -87,16 +98,19 @@ export async function apply(ctx: Context, config: Config = {}): Promise<void> {
     installTools(agent)
     return undefined
   })
-  const stopDisposed = ctx.on('agent/disposed', ({ agent }) => {
-    toolCleanups.get(agent)?.()
-    toolCleanups.delete(agent)
+  // A session can change preset after agent/created fired.
+  const stopSelected = ctx.on('agent-preset/selected', (sessionId) => {
+    const agent = ctx.agents.get(sessionId)
+    if (agent) installTools(agent)
   })
+  const stopDisposed = ctx.on('agent/disposed', ({ agent }) => uninstallTools(agent))
   const stopApi = registerAutomationApi(ctx, controller)
   scheduler.start()
 
   ctx.effect(() => async () => {
     stopApi()
     stopCreated()
+    stopSelected()
     stopDisposed()
     for (const dispose of toolCleanups.values()) dispose()
     toolCleanups.clear()
