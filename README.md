@@ -61,7 +61,8 @@
 
 | Plugin version | Supported DSH versions |
 | --- | --- |
-| 0.3.36 and later | 0.1.7-rc.2 to the latest 0.2.2 RC |
+| 0.3.38 and later | 0.1.7-rc.2 to the latest 0.2.2 RC |
+| 0.3.36 to 0.3.37 | 0.1.7-rc.2 to 0.2.2-rc.1 (fails to load on 0.2.2-rc.2 and later) |
 | 0.3.35 | 0.1.7-rc.2 to the latest 0.2.1 RC (fails to load on 0.2.2) |
 | 0.3.34 and earlier | 0.1.7-rc.2 to 0.2.0-rc.2 (fails to load on 0.2.1 and later) |
 
