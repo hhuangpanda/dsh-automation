@@ -93,7 +93,7 @@ export async function apply(ctx: Context, config: Config = {}): Promise<void> {
     toolCleanups.set(agent, dispose)
   }
 
-  for (const agent of ctx.agents.roots()) installTools(agent)
+  for (const agent of ctx.agents.list()) installTools(agent)
   const stopCreated = ctx.on('agent/created', ({ agent }) => {
     installTools(agent)
     return undefined
